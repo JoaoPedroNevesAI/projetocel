@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { View, Text, Image, Button, TextInput } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen.js';
+import LoginScreen from './screens/LoginScreen.js';
+import CadastroScreen from './screens/CadastroScreen.js';
+import EditarContatoScreen from './screens/EditarContato.js';
+import CriarContatoScreen from './screens/CriarContato.js';
+import ListaScreen from './screens/ListaScreen.js';
 
-export default function App() {
+
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Cadastro" component={CadastroScreen} />
+        <Stack.Screen name="EditarContato" component={EditarContatoScreen} />
+        <Stack.Screen name="CriarContato" component={CriarContatoScreen} />
+        <Stack.Screen name="Lista" component={ListaScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
