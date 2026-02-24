@@ -1,42 +1,31 @@
 import * as React from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function EditarContatoScreen({ navigation }) {
+export default function CadastrarScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.titulo}>Contato</Text>
+      <Text style={styles.titulo}>Usuário</Text>
 
       <Text>Nome</Text>
+      <TextInput style={styles.input} />
+
+      <Text>CPF</Text>
+      <TextInput style={styles.input} />
+
+      <Text>E-mail</Text>
+      <TextInput style={styles.input} />
+
+      <Text>Senha</Text>
       <TextInput
         style={styles.input}
-        defaultValue=""
+        secureTextEntry={true}
       />
 
-      <Text>Email</Text>
-      <TextInput
-        style={styles.input}
-        defaultValue=""
-      />
-
-      <Text>Telefone</Text>
-      <TextInput
-        style={styles.input}
-        defaultValue=""
-      />
-
-      <View style={{ marginTop: 20 }}>
+      <View style={styles.botao}>
         <Button
-          title="Alterar"
+          title="Salvar"
           color="#2a6fdb"
-          onPress={() => navigation.goBack()}
-        />
-      </View>
-
-      <View style={{ marginTop: 10 }}>
-        <Button
-          title="Excluir"
-          color="#ff0000"
           onPress={() => navigation.goBack()}
         />
       </View>
@@ -60,5 +49,8 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 15,
     paddingHorizontal: 8,
+  },
+  botao: {
+    marginTop: 20,
   },
 });

@@ -1,27 +1,61 @@
 import * as React from 'react';
-import { View, Text, Image, Button, TextInput } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, Image, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function LoginScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={styles.container}>
+
       <Image
         source={{ uri: 'https://simplescontrole.com.br/wp-content/uploads/2024/05/usuario.png' }}
-        style={{ width: 150, height: 150 }}
+        style={styles.image}
       />
-      <Text></Text>
+
+      <Text>E-mail</Text>
+      <TextInput style={styles.input} />
+
+      <Text>Senha</Text>
+      <TextInput
+        style={styles.input}
+        secureTextEntry={true}
+      />
+
+      <View style={styles.buttonSpacing}>
+        <Button
+          title="Login"
+          color="#2a6fdb"
+          onPress={() => navigation.navigate('Lista')}
+        />
+      </View>
 
       <Button
-        onPress={() => navigation.navigate('Home')}
-        title="Login"
-        color="#0400ff"
-      />
-      <Button
-        onPress={() => navigation.navigate('Home')}
         title="Cadastre-se"
         color="#ff0000"
+        onPress={() => navigation.navigate('Cadastrar')}
       />
+
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#d6ccc2',
+    padding: 20,
+  },
+  image: {
+    width: 120,
+    height: 120,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  input: {
+    borderWidth: 1,
+    height: 40,
+    marginBottom: 15,
+    paddingHorizontal: 8,
+  },
+  buttonSpacing: {
+    marginBottom: 10,
+  },
+});
